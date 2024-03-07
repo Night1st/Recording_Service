@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 import React from 'react'
 
 type Props = {
-    id: number
+    id: string
 }
 
 export default function DepartmentDetail({ id }: Props) {

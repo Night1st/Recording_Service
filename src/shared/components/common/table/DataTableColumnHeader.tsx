@@ -1,10 +1,9 @@
 import { Column } from '@tanstack/react-table';
-import { ArrowDownIcon, ArrowUpIcon, EyeIcon, SearchIcon, Settings2Icon } from 'lucide-react';
+import { ArrowDownIcon, ArrowUpIcon, EyeIcon, Settings2Icon } from 'lucide-react';
 
 import { Button } from '@/shared/components/common/ui/button';
 import { cn } from '@/shared/utils/tailwind/functions';
 import classNames from 'classnames';
-import { useState } from 'react';
 import { Input } from '../ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 
@@ -20,15 +19,13 @@ const DataTableColumnHeader = <TData, TValue>({
   title,
   className,
   defaultFilter,
-  defaultSort,
 }: DataTableColumnHeaderProps<TData, TValue>) => {
-  const [searchValue, setSearchValue] = useState<string>(defaultFilter);
   if (!column.getCanSort()) {
     return <div className={cn(className)}>{title}</div>;
   }
   const itemClassName = 'p-2 rounded-md flex gap-2 items-center hover:bg-foreground/5 cursor-pointer';
   return (
-    <div className={cn('flex items-center space-x-2', className)}>
+    <div className={cn('flex flex-col items-center space-x-2', className)}>
       <Popover>
         <PopoverTrigger asChild>
           <Button
@@ -57,48 +54,9 @@ const DataTableColumnHeader = <TData, TValue>({
               Hide
             </div>
           )}
-          {(column?.columnDef?.meta as any)?.searchFn !== undefined &&
-            <div className={itemClassName}>
-              <Input
-                value={searchValue}
-                onChange={v => {
-                  setSearchValue(v.target.value);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter') {
-                    const metaCol = column?.columnDef.meta as any;
-                    if (metaCol?.searchFn) {
-                      metaCol.searchFn(searchValue);
-                    }
-                  }
-                }}
-              />
-              <Button
-                onClick={() => {
-                  const metaCol = column?.columnDef.meta as any;
-                  if (metaCol?.searchFn) {
-                    metaCol.searchFn(searchValue);
-                  }
-                }}
-              >
-                <SearchIcon />
-              </Button>
-              <Button
-                variant={'outline'}
-                onClick={() => {
-                  setSearchValue('');
-                  const metaCol = column?.columnDef.meta as any;
-                  if (metaCol?.searchFn) {
-                    metaCol.searchFn(undefined);
-                  }
-                }}
-              >
-                X
-              </Button>
-            </div>
-          }
         </PopoverContent>
       </Popover>
+      <Input placeholder='Search...' value={column.getFilterValue() as string} onChange={(event) => column.setFilterValue(event.target.value)}/>
     </div>
   );
 };

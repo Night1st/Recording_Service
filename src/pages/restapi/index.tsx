@@ -1,7 +1,9 @@
+import { DATETIME_FORMAT } from '@/Settings';
 import DataTable from '@/shared/components/common/table/DataTable';
 import DataTableColumnHeader from '@/shared/components/common/table/DataTableColumnHeader';
 import { IRestAPI, RestAPIData } from '@/shared/schemas/models/IRestAPI';
 import { ColumnDef } from '@tanstack/react-table';
+import dayjs from 'dayjs';
 
 type Props = {}
 
@@ -40,8 +42,9 @@ export default function APITable({ }: Props) {
         {
             id: "createdOn",
             accessorKey: "createdOn",
-            cell(props) {
-                return <div>{props.getValue() as string}</div>
+            cell: ({row}) => {
+                const record = row.original
+                return <div>{dayjs(record.createdOn).format(DATETIME_FORMAT)}</div>
             },
             header: ({ column }) => <DataTableColumnHeader column={column} title="Created on" />,
 

@@ -27,7 +27,6 @@ import DataTablePagination from "./DataTablePagination"
 import classNames from "classnames"
 import { Input } from "../ui/input"
 
-
 export const COLUMNDATA_TYPE = {
     STRING: 'string',
     DATE: 'date',
@@ -65,7 +64,6 @@ function DataTable<TData, TValue>({
         []
     )
     const [globalFilter, setGlobalFilter] = React.useState('')
-
     const table = useReactTable({
         data,
         columns,
@@ -103,7 +101,7 @@ function DataTable<TData, TValue>({
     };
     return <>
         <div className="flex items-center py-4">
-            <Input value={globalFilter ?? ''} onChange={value => console.log(String(value))}/>
+            <Input placeholder="Search Table..." value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value.target.value))}/>
             <DataTableHeader table={table} />
         </div>
 

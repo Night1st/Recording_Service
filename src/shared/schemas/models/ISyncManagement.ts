@@ -1,5 +1,5 @@
 export interface ISyncManagement {
-    date: string,
+    date: Date,
     totalConversation: Number,
     noRecording: Number,
     downloadedRecording: Number
@@ -7,13 +7,13 @@ export interface ISyncManagement {
 
 export const SyncData = [
     {
-        date: "01/03/2024",
+        date: new Date(2024, 2, 1),
         totalConversation: 170,
         noRecording: 10,
         downloadedRecording: 160
     },
     {
-        date: "02/03/2024",
+        date: new Date(2024, 2, 1),
         totalConversation: 155,
         noRecording: 14,
         downloadedRecording: 141

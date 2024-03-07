@@ -7,7 +7,7 @@ export interface IRecording {
     agent: string,
     remote: string,
     wrapUpCode: string,
-    conversationStart: string
+    conversationStart: Date
 }
 
 export const RecordingData = [
@@ -20,7 +20,7 @@ export const RecordingData = [
         agent: "Agent1",
         remote: "tel:8062",
         wrapUpCode: "Default Wrap-up Code",
-        conversationStart: "02/03/2024 19:00:00"
+        conversationStart: new Date(2024, 3, 1)
     },
     {
         channel: "email",
@@ -31,6 +31,6 @@ export const RecordingData = [
         agent: "Agent1",
         remote: "minhkhanhhoang2710@gmail.com",
         wrapUpCode: "Default Wrap-up Code",
-        conversationStart: "02/03/2024 19:00:00"
+        conversationStart: new Date(2024, 3, 2)
     }
 ]

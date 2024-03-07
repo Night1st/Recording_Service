@@ -1,9 +1,9 @@
+import { TIME_FORMAT_READ } from '@/Settings';
 import DataTable from '@/shared/components/common/table/DataTable';
 import DataTableColumnHeader from '@/shared/components/common/table/DataTableColumnHeader';
-import { Button } from '@/shared/components/common/ui/button';
 import { ISyncManagement, SyncData } from '@/shared/schemas/models/ISyncManagement';
 import { ColumnDef } from '@tanstack/react-table';
-import { PlusCircle } from 'lucide-react';
+import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 
 type Props = {}
@@ -16,8 +16,9 @@ export default function SyncTable({ }: Props) {
         {
             id: "date",
             accessorKey: "date",
-            cell(props) {
-                return <div>{props.getValue() as string}</div>
+            cell: ({row}) => {
+                const record = row.original
+                return <div>{dayjs(record.date).format(TIME_FORMAT_READ)}</div>
             },
             header: ({ column }) => <DataTableColumnHeader column={column} title="Date" />,
         },
