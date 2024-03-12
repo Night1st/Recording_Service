@@ -7,7 +7,12 @@ export interface IRecording {
     agent: string,
     remote: string,
     wrapUpCode: string,
-    conversationStart: Date
+    conversationStart: Date,
+    dnis: string,
+    divisionId: string,
+    conversationDuration: string,
+    acw: string,
+    recording: string
 }
 
 export const RecordingData = [
@@ -20,7 +25,12 @@ export const RecordingData = [
         agent: "Agent1",
         remote: "tel:8062",
         wrapUpCode: "Default Wrap-up Code",
-        conversationStart: new Date(2024, 3, 1)
+        conversationStart: new Date(2024, 3, 1),
+        dnis: "19006457",
+        divisionId: "e96d8218-6c4a-49b2-b582-d9b65ccd9410",
+        conversationDuration: "28183ms",
+        acw: "2000ms",
+        recording: "public/ByYourSide.mp3"
     },
     {
         channel: "email",
@@ -31,6 +41,11 @@ export const RecordingData = [
         agent: "Agent1",
         remote: "minhkhanhhoang2710@gmail.com",
         wrapUpCode: "Default Wrap-up Code",
-        conversationStart: new Date(2024, 3, 2)
+        conversationStart: new Date(2024, 3, 2),
+        dnis: "hotrokhachhang@vps.com.vn",
+        divisionId: "e96d8218-6c4a-49b2-b582-d9b65ccd9410",
+        conversationDuration: "28183ms",
+        acw: "2000ms",
+        recording: "public/ByYourSide.mp3"
     }
 ]

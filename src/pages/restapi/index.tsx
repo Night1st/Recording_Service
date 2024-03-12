@@ -1,9 +1,13 @@
 import { DATETIME_FORMAT } from '@/Settings';
 import DataTable from '@/shared/components/common/table/DataTable';
 import DataTableColumnHeader from '@/shared/components/common/table/DataTableColumnHeader';
+import { Button } from '@/shared/components/common/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/shared/components/common/ui/dropdown-menu';
 import { IRestAPI, RestAPIData } from '@/shared/schemas/models/IRestAPI';
 import { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
+import { Edit, MoreHorizontal } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 type Props = {}
 
@@ -76,8 +80,30 @@ export default function APITable({ }: Props) {
             header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
 
         },
-
+        {
+            id: 'actions',
+            header: "Action",
+            cell: ({ row }) => {
+                const record = row.original;
+                return (
+                    <DropdownMenu >
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" className="h-8 w-8 p-0">
+                                <span className="sr-only">Open menu</span>
+                                <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuItem className="cursor-pointer pl-4 font-medium" onClick={() => router.push(`/restapi/detail/${record.id}`)}>
+                                <Edit className="mr-2 h-4 w-4" /> Detail
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                );
+            },
+        }
     ];
+    const router = useRouter()
     return (
         <section className='w-full'>
             <div className='flex justify-between' >

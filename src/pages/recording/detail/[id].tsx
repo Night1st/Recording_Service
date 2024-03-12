@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next'
 import React from 'react'
 import { RecordingData } from '@/shared/schemas/models/IRecording'
+import dayjs from 'dayjs'
+import { DATETIME_FORMAT } from '@/Settings'
 
 type Props = {
     id: String
@@ -9,40 +11,76 @@ type Props = {
 export default function ProjectDetail({ id }: Props) {
     const detail = RecordingData.find(obj => obj.conversationId === id)
     return (
-        <section className='w-full flex flex-col gap-10'>
+        <section className='w-full flex flex-col gap-8'>
             <div className='text-2xl font-bold'>{id}</div>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Channel</th>
-                        <td>{detail?.channel}</td>
-                    </tr>
-                    <tr>
-                        <th>Conversation ID</th>
-                        <td>{detail?.conversationId}</td>
-                    </tr>
-                    <tr>
-                        <th>Agent Name</th>
-                        <td>{detail?.agent}</td>
-                    </tr>
-                    <tr>
-                        <th>Originating Direction</th>
-                        <td>{detail?.originatingDirection}</td>
-                    </tr>
-                    <tr>
-                        <th>Queue Name</th>
-                        <td>{detail?.queue}</td>
-                    </tr>
-                    <tr>
-                        <th>Remote</th>
-                        <td>{detail?.remote}</td>
-                    </tr>
-                    <tr>
-                        <th>Wrap-up</th>
-                        <td>{detail?.wrapUpCode}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div className='grid grid-cols-2'>
+                <div className='w-full'>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th className='text-left pt-3'>Channel</th>
+                                <td className='pt-3'>{detail?.channel}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Conversation Start</th>
+                                <td className='pt-3'>{dayjs(detail?.conversationStart).format(DATETIME_FORMAT)}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Agent Name</th>
+                                <td className='pt-3'>{detail?.agent}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Originating Direction</th>
+                                <td className='pt-3'>{detail?.originatingDirection}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Queue Name</th>
+                                <td className='pt-3'>{detail?.queue}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Remote</th>
+                                <td className='pt-3'>{detail?.remote}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>DNIS</th>
+                                <td className='pt-3'>{detail?.dnis}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div className='flex items-center gap-5'>
+                        <p className='font-bold'>Recording</p>
+                        <audio controls>
+                            <source src='/assets/ByYourSide.mp3'></source>
+                        </audio>
+                    </div>
+                </div>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                                <th className='text-left pt-3'>Division Name</th>
+                                <td className='pt-3'>{detail?.division}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Division ID</th>
+                                <td className='pt-3'>{detail?.divisionId}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Conversation Duration</th>
+                                <td className='pt-3'>{detail?.conversationDuration}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>ACW</th>
+                                <td className='pt-3'>{detail?.acw}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Wrap-up</th>
+                                <td className='pt-3'>{detail?.wrapUpCode}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
     )
 }

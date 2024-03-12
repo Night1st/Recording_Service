@@ -27,13 +27,6 @@ export const APP_MENU: MenuItem[] = [
 
     },
     {
-        title: 'Sync Management',
-        href: '/sync',
-        Icon: <GitPullRequest className='mr-2 h-5 w-5' />,
-        userType: ["SYSTEM_ADMIN"]
-
-    },
-    {
         title: 'REST API',
         href: '/restapi',
         Icon: <Store className='mr-2 h-5 w-5' />,
