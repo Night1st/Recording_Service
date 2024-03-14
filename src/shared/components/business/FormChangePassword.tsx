@@ -1,7 +1,6 @@
 import InputText from '@/shared/components/common/form/InputText'
 import InputTextArea from '@/shared/components/common/form/InputTextArea'
 import { Form } from '@/shared/components/common/ui/form'
-import { IPhase } from '@/shared/schemas/models/IPhase.model'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2, MoveLeft } from 'lucide-react'
 import React, { useEffect } from 'react'

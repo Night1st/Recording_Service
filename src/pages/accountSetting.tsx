@@ -4,7 +4,7 @@ import { Button, buttonVariants } from '@/shared/components/common/ui/button'
 import { Form } from '@/shared/components/common/ui/form'
 import { Separator } from '@/shared/components/common/ui/separator'
 import { useAppSelector } from '@/shared/hooks/useRedux'
-import { IUser, useSelfUpdateUser, useUpdateUser } from '@/shared/schemas/models/IUser.model'
+import { IUser, useSelfUpdateUser } from '@/shared/schemas/models/IUser.model'
 import { cn } from '@/shared/utils/tailwind/functions'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2 } from 'lucide-react'
@@ -32,10 +32,6 @@ export default function AccountSetting({ }: Props) {
     if (user) {
       form.setValue('fullName', user.fullName)
       form.setValue('userName', user.userName)
-      form.setValue('departmentDisable', user.department?.name)
-      form.setValue('departmentId', user.department?.id)
-      form.setValue('jobPositionDisable', user.jobPosition?.name)
-      form.setValue('jobPositionId', user.jobPosition?.id)
     }
   }, [user, form])
   const [tab, setTab] = useState(1)
@@ -103,8 +99,6 @@ export default function AccountSetting({ }: Props) {
               <form onSubmit={form.handleSubmit(onSubmit)} onError={e => { console.log(e) }} className="space-y-4">
                 <InputText form={form} fieldName="userName" label='Tên hệ thống' />
                 <InputText form={form} fieldName="fullName" label='Tên đầy đủ' />
-                <InputText form={form} fieldName="departmentDisable" label='Phòng làm việc' inputProps={{ defaultValue: user.department?.name, disabled: true }} />
-                <InputText form={form} fieldName="jobPositionDisable" label='Vị trí' inputProps={{ defaultValue: user.jobPosition?.name, disabled: true }} />
                 <div className='flex justify-start gap-4'>
                   <Button type="submit" > {handleUpdate.isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} Lưu</Button>
                 </div>

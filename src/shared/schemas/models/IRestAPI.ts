@@ -98,3 +98,7 @@ export const RestAPIData = [
         }
     },
 ]
+
+export const useGetAllConversation = () => {
+    
+}

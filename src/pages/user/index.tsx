@@ -105,18 +105,6 @@ export default function UserTable({ }: Props) {
                 }
             }
         },
-        {
-            id: "Department",
-            accessorFn: (row) => row.department?.name,
-            header: ({ column }) => <DataTableColumnHeader column={column} title="Phòng ban" />,
-
-        },
-        {
-            id: "Jobposition",
-            accessorFn: (row) => row.jobPosition?.name,
-            header: ({ column }) => <DataTableColumnHeader column={column} title="Vị trí" />,
-
-        },
 
         {
             id: "createdDate",

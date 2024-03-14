@@ -9,9 +9,6 @@ import { z } from 'zod'
 import InputPassword from '../../common/form/InputPassword'
 import InputSelect from '../../common/form/InputSelect'
 import { Button } from '../../common/ui/button'
-import InputSelectJobPosition from '../InputJobposition'
-import InputSelectDepartment from '../InputSelectDepartment'
-import InputSelectJobPositionByDepartmentId from '../InputJobPositionByDepartmentId'
 
 type Props = {
     onSubmit: (value: Partial<ICreateUser>) => void
@@ -54,8 +51,6 @@ export default function FormUser({ onSubmit, isLoading, defaultValue, onBack, vi
                 {viewMode === 'create' &&
                     <InputPassword form={form} fieldName="password" label='Mật khẩu tài khoản' />}
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
-                    <InputSelectDepartment form={form} fieldName="departmentId" label='Chọn phòng ban' handleOnchange={() => form.resetField('jobPositionId')} />
-                    <InputSelectJobPositionByDepartmentId form={form} fieldName="jobPositionId" label='Chọn vị trí' departmentId={departId} />
                     <InputSelect form={form} fieldName="userType" label='Chọn loại tài khoản' options={[
                         {
                             value: "SYSTEM_ADMIN", label: "SYSTEM_ADMIN",

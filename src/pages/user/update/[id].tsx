@@ -26,11 +26,6 @@ export default function UserUpdate({ id }: Props) {
                 <div className='text-2xl font-bold'>Cập nhật người dùng</div>
                 <Button onClick={() => router.push('/user')}><ListBulletIcon className='mr-2' />Danh sách người dùng</Button>
             </div>
-            <FormUser viewMode='update' onSubmit={onSubmit} isLoading={handleUpdate.isLoading} onBack={() => router.push('/user')} defaultValue={{
-                ...data,
-                departmentId: data?.department?.id,
-                jobPositionId: data?.jobPosition?.id
-            }} />
         </section>
     )
 }

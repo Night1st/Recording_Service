@@ -10,11 +10,6 @@ type Props = {
 
 export default function RestAPIDetail({ id }: Props) {
     const detail = RestAPIData.find(obj => obj.id == id)
-    const response = {
-        "IVR": "No",
-        "birthdayCheck": "Yes"
-    }
-    console.log(JSON.stringify(response, undefined, 5))
     return (
         <section className='w-full flex flex-col gap-8'>
             <div className='text-2xl font-bold'>{detail?.api}</div>
@@ -24,15 +19,15 @@ export default function RestAPIDetail({ id }: Props) {
                         <tbody>
                             <tr>
                                 <th className='text-left pt-3'>Collection</th>
-                                <td className='pt-3'>{detail?.collection}</td>
+                                <td className='pt-3 pl-3'>{detail?.collection}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Request URL</th>
-                                <td className='pt-3'>{detail?.requestURL}</td>
+                                <td className='pt-3 pl-3'>{detail?.requestURL}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Request Method</th>
-                                <td className='pt-3'>{detail?.requestMethod}</td>
+                                <td className='pt-3 pl-3'>{detail?.requestMethod}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -42,11 +37,11 @@ export default function RestAPIDetail({ id }: Props) {
                         <tbody>
                             <tr>
                                 <th className='text-left pt-3'>Created By</th>
-                                <td className='pt-3'>{detail?.createdBy}</td>
+                                <td className='pt-3 pl-3'>{detail?.createdBy}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Created On</th>
-                                <td className='pt-3'>{dayjs(detail?.createdOn).format(DATETIME_FORMAT)}</td>
+                                <td className='pt-3 pl-3'>{dayjs(detail?.createdOn).format(DATETIME_FORMAT)}</td>
                             </tr>
                         </tbody>
                     </table>

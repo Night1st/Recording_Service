@@ -92,7 +92,6 @@ export const useLogin = () => {
       password: string
     }) => axiosInstance.post<IBaseResponse<ILoginedUser>>('/auth/login', User),
     onSuccess: (data) => {
-      console.log(data.data.user.department?.name)
       if (!data.data.token) return
       setCookie(APP_SAVE_KEY.TOKEN_KEY, data.data.token)
       dispatch(login(data.data.user))

@@ -9,9 +9,6 @@ export default function UserNameTag() {
             <span className='font-bold text-lg capitalize'>
                 {user?.fullName}
             </span>
-            <span className='text-slate-400 text-sm'>
-                {user.jobPosition?.name} - {user.department?.name}
-            </span>
         </div>
     )
 }
