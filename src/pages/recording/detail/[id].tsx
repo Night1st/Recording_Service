@@ -110,7 +110,7 @@ export default function ProjectDetail({ id }: Props) {
 // }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = [{ params: { id: '1' } }, { params: { id: '2' } }]; // Example paths
+    const paths = [{ params: { id: 'abc123' } }, { params: { id: '456def' } }]; // Example paths
     return {
       paths,
       fallback: true, // or 'blocking' if you want to wait for data to be fetched
