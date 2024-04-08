@@ -1,7 +1,7 @@
 import { DATETIME_FORMAT } from '@/Settings'
 import { RestAPIData } from '@/shared/schemas/models/IRestAPI'
 import dayjs from 'dayjs'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
 
 type Props = {
@@ -77,3 +77,15 @@ export default function RestAPIDetail({ id }: Props) {
 //     return { props: { id: ctx.query.id } }
 
 // }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = [{ params: { id: '1' } }, { params: { id: '2' } }]; // Example paths
+    return {
+      paths,
+      fallback: true, // or 'blocking' if you want to wait for data to be fetched
+    };
+}
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
+    return { props: {id: params?.id}}
+}

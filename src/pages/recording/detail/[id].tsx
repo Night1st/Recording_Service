@@ -1,11 +1,15 @@
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
-import { RecordingData } from '@/shared/schemas/models/IRecording'
+import { IRecording, RecordingData } from '@/shared/schemas/models/IRecording'
 import dayjs from 'dayjs'
 import { DATETIME_FORMAT } from '@/Settings'
 
 type Props = {
     id: String
+}
+
+type RecordingProps = {
+    recording: IRecording
 }
 
 export default function ProjectDetail({ id }: Props) {
@@ -104,3 +108,15 @@ export default function ProjectDetail({ id }: Props) {
 //     return { props: { id: ctx.query.id } }
 
 // }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = [{ params: { id: '1' } }, { params: { id: '2' } }]; // Example paths
+    return {
+      paths,
+      fallback: true, // or 'blocking' if you want to wait for data to be fetched
+    };
+}
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
+    return { props: {id: params?.id}}
+}
