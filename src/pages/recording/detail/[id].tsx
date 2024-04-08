@@ -10,6 +10,21 @@ type Props = {
 
 export default function ProjectDetail({ id }: Props) {
     const detail = RecordingData.find(obj => obj.conversationId === id)
+    const milisecondsToTime = (ms?: number) => {
+        const time = ms
+        if(time == undefined) return ""
+        const totalSeconds = time / 1000
+
+        const minutes = Math.floor(totalSeconds / 60)
+        const seconds = Math.floor(totalSeconds % 60)
+        const miliseconds = Math.floor(time % 1000)
+
+        const formattedMinutes = (minutes < 10) ? `0${minutes}` : minutes.toString()
+        const formattedSeconds = (seconds < 10) ? `0${seconds}` : seconds.toString()
+        const formattedMiliSeconds = (miliseconds < 10) ? `00${miliseconds}` : (miliseconds < 100) ? `0${miliseconds}` : miliseconds.toString()
+
+        return `${formattedMinutes}:${formattedSeconds}.${formattedMiliSeconds}`
+    }
     return (
         <section className='w-full flex flex-col gap-8'>
             <div className='text-2xl font-bold'>{id}</div>
@@ -19,31 +34,31 @@ export default function ProjectDetail({ id }: Props) {
                         <tbody>
                             <tr>
                                 <th className='text-left pt-3'>Channel</th>
-                                <td className='pt-3'>{detail?.channel}</td>
+                                <td className='pt-3 pl-3'>{detail?.channel}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Conversation Start</th>
-                                <td className='pt-3'>{dayjs(detail?.conversationStart).format(DATETIME_FORMAT)}</td>
+                                <td className='pt-3 pl-3'>{dayjs(detail?.conversationStart).format(DATETIME_FORMAT)}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Agent Name</th>
-                                <td className='pt-3'>{detail?.agent}</td>
+                                <td className='pt-3 pl-3'>{detail?.agent}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Originating Direction</th>
-                                <td className='pt-3'>{detail?.originatingDirection}</td>
+                                <td className='pt-3 pl-3'>{detail?.originatingDirection}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Queue Name</th>
-                                <td className='pt-3'>{detail?.queue}</td>
+                                <td className='pt-3 pl-3'>{detail?.queue}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Remote</th>
-                                <td className='pt-3'>{detail?.remote}</td>
+                                <td className='pt-3 pl-3'>{detail?.remote}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>DNIS</th>
-                                <td className='pt-3'>{detail?.dnis}</td>
+                                <td className='pt-3 pl-3'>{detail?.dnis}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -59,23 +74,23 @@ export default function ProjectDetail({ id }: Props) {
                         <tbody>
                         <tr>
                                 <th className='text-left pt-3'>Division Name</th>
-                                <td className='pt-3'>{detail?.division}</td>
+                                <td className='pt-3 pl-3'>{detail?.division}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Division ID</th>
-                                <td className='pt-3'>{detail?.divisionId}</td>
+                                <td className='pt-3 pl-3'>{detail?.divisionId}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Conversation Duration</th>
-                                <td className='pt-3'>{detail?.conversationDuration}</td>
+                                <td className='pt-3 pl-3'>{milisecondsToTime(detail?.conversationDuration)}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>ACW</th>
-                                <td className='pt-3'>{detail?.acw}</td>
+                                <td className='pt-3 pl-3'>{milisecondsToTime(detail?.acw)}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Wrap-up</th>
-                                <td className='pt-3'>{detail?.wrapUpCode}</td>
+                                <td className='pt-3 pl-3'>{detail?.wrapUpCode}</td>
                             </tr>
                         </tbody>
                     </table>

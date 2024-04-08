@@ -127,7 +127,12 @@ export default function RecordingTable({ }: Props) {
             <DataTable
                 data={RecordingData}
                 columns={columns}
-                tableName={TABLE_NAME} isLoading={false} pageSize={0} pageIndex={0} pageCount={0} handChangePagination={function (value: number, type: 'Page_change' | 'Size_change'): void {
+                tableName={TABLE_NAME} 
+                isLoading={false}
+                pageSize={4} 
+                pageIndex={0} 
+                pageCount={10} 
+                handChangePagination={function (value: number, type: 'Page_change' | 'Size_change'): void {
                     throw new Error('Function not implemented.');
                 } }
 

@@ -10,8 +10,8 @@ export interface IRecording {
     conversationStart: Date,
     dnis: string,
     divisionId: string,
-    conversationDuration: string,
-    acw: string,
+    conversationDuration: number,
+    acw: number,
     recording: string
 }
 
@@ -28,8 +28,8 @@ export const RecordingData = [
         conversationStart: new Date(2024, 3, 1),
         dnis: "19006457",
         divisionId: "e96d8218-6c4a-49b2-b582-d9b65ccd9410",
-        conversationDuration: "28183ms",
-        acw: "2000ms",
+        conversationDuration: 28183,
+        acw: 2000,
         recording: "public/ByYourSide.mp3"
     },
     {
@@ -44,8 +44,8 @@ export const RecordingData = [
         conversationStart: new Date(2024, 3, 2),
         dnis: "hotrokhachhang@vps.com.vn",
         divisionId: "e96d8218-6c4a-49b2-b582-d9b65ccd9410",
-        conversationDuration: "28183ms",
-        acw: "2000ms",
+        conversationDuration: 88183,
+        acw: 2000,
         recording: "public/ByYourSide.mp3"
     }
 ]

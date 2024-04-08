@@ -18,9 +18,9 @@ export const RestAPIData = [
         api: "REST.log.1",
         collection: "API1",
         createdBy: "admin",
-        createdOn: new Date(2024, 2, 1),
+        createdOn: new Date(2024, 2, 1, 12, 30, 0),
         requestMethod: "GET",
-        requestURL: "",
+        requestURL: "https://test-crmapi.vps.com.vn/api/v1/getCustomerInfo",
         status: "Success",
         params: {
             "arg": [
@@ -46,9 +46,9 @@ export const RestAPIData = [
         api: "REST.log.2",
         collection: "API2",
         createdBy: "admin",
-        createdOn: new Date(2024, 2, 2),
+        createdOn: new Date(2024, 2, 2, 12, 30, 0),
         requestMethod: "POST",
-        requestURL: "",
+        requestURL: "https://test-crmapi.vps.com.vn/api/v1/getCustomerInfo",
         status: "Success",
         params: {
             "arg": [
@@ -74,9 +74,9 @@ export const RestAPIData = [
         api: "REST.log.3",
         collection: "API3",
         createdBy: "admin",
-        createdOn: new Date(2024, 2, 3),
+        createdOn: new Date(2024, 2, 3, 13, 45, 30),
         requestMethod: "GET",
-        requestURL: "",
+        requestURL: "https://test-crmapi.vps.com.vn/api/v1/getCustomerInfo",
         status: "Failed",
         params: {
             "arg": [

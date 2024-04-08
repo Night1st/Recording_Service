@@ -113,10 +113,9 @@ export default function APITable({ }: Props) {
                 data={RestAPIData}
                 columns={columns}
                 tableName={TABLE_NAME}
-                isClientPagination
                 isLoading={false}
                 pageCount={4}
-                pageIndex={1}
+                pageIndex={0}
                 pageSize={10}
                 handChangePagination={() => { console.log() }}
             />
