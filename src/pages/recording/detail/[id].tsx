@@ -3,14 +3,14 @@ import React from 'react'
 import { IRecording, RecordingData } from '@/shared/schemas/models/IRecording'
 import dayjs from 'dayjs'
 import { DATETIME_FORMAT } from '@/Settings'
-import de from 'date-fns/esm/locale/de/index.js'
 
 type Props = {
     id: number
 }
 
 export default function ProjectDetail({ id }: Props) {
-    const detail = RecordingData.find(obj => obj.id === id)
+    const detail = RecordingData.find(obj => obj.id == id)
+    console.log(detail)
     const milisecondsToTime = (ms?: number) => {
         const time = ms
         if(time == undefined) return ""

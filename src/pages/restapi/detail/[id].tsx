@@ -10,6 +10,7 @@ type Props = {
 
 export default function RestAPIDetail({ id }: Props) {
     const detail = RestAPIData.find(obj => obj.id == id)
+    console.log(detail)
     return (
         <section className='w-full flex flex-col gap-8'>
             <div className='text-2xl font-bold'>{detail?.api}</div>

@@ -108,7 +108,7 @@ export default function RecordingTable({ }: Props) {
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            <DropdownMenuItem className="cursor-pointer pl-4 font-medium" onClick={() => router.push(`/recording/detail/${record.conversationId}`)}>
+                            <DropdownMenuItem className="cursor-pointer pl-4 font-medium" onClick={() => router.push(`/recording/detail/${record.id}`)}>
                                 <Edit className="mr-2 h-4 w-4" /> Detail
                             </DropdownMenuItem>
                         </DropdownMenuContent>
