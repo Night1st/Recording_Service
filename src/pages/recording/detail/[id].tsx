@@ -3,17 +3,14 @@ import React from 'react'
 import { IRecording, RecordingData } from '@/shared/schemas/models/IRecording'
 import dayjs from 'dayjs'
 import { DATETIME_FORMAT } from '@/Settings'
+import de from 'date-fns/esm/locale/de/index.js'
 
 type Props = {
-    id: String
-}
-
-type RecordingProps = {
-    recording: IRecording
+    id: number
 }
 
 export default function ProjectDetail({ id }: Props) {
-    const detail = RecordingData.find(obj => obj.conversationId === id)
+    const detail = RecordingData.find(obj => obj.id === id)
     const milisecondsToTime = (ms?: number) => {
         const time = ms
         if(time == undefined) return ""
@@ -31,7 +28,7 @@ export default function ProjectDetail({ id }: Props) {
     }
     return (
         <section className='w-full flex flex-col gap-8'>
-            <div className='text-2xl font-bold'>{id}</div>
+            <div className='text-2xl font-bold'>{detail?.conversationId}</div>
             <div className='grid grid-cols-2'>
                 <div className='w-full'>
                     <table>
@@ -110,7 +107,7 @@ export default function ProjectDetail({ id }: Props) {
 // }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = [{ params: { id: 'abc123' } }, { params: { id: '456def' } }]; // Example paths
+    const paths = [{ params: { id: '1' } }, { params: { id: '2' } }]; // Example paths
     return {
       paths,
       fallback: true, // or 'blocking' if you want to wait for data to be fetched

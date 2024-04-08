@@ -1,4 +1,5 @@
 export interface IRecording {
+    id: number,
     channel: string,
     division: string,
     queue: string,
@@ -17,6 +18,7 @@ export interface IRecording {
 
 export const RecordingData = [
     {
+        id: 1,
         channel: "voice",
         division: "Home",
         queue: "VPS_Money",
@@ -33,6 +35,7 @@ export const RecordingData = [
         recording: "public/ByYourSide.mp3"
     },
     {
+        id: 2,
         channel: "email",
         division: "Home",
         queue: "VPS_Email_DVKH",
