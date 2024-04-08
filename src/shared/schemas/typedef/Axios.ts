@@ -156,5 +156,5 @@ class Axios {
 }
 
 
-// export const axiosInstance = new Axios(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001', false);
-// export const axiosInstanceNoAuth = new Axios(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001', true);
+export const axiosInstance = new Axios(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001', false);
+export const axiosInstanceNoAuth = new Axios(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001', true);
