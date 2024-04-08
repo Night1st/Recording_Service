@@ -94,7 +94,7 @@ export default function APITable({ }: Props) {
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            <DropdownMenuItem className="cursor-pointer pl-4 font-medium" onClick={() => router.push(`/restapi/detail/${record.id}`)}>
+                            <DropdownMenuItem className="cursor-pointer pl-4 font-medium" onClick={() => router.push(`/recording`)}>
                                 <Edit className="mr-2 h-4 w-4" /> Detail
                             </DropdownMenuItem>
                         </DropdownMenuContent>
