@@ -20,15 +20,15 @@ export default function RestAPIDetail({ id }: Props) {
                         <tbody>
                             <tr>
                                 <th className='text-left pt-3'>Collection</th>
-                                <td className='pt-3 pl-3'>{detail?.collection}</td>
+                                <td className='pt-3 pl-10'>{detail?.collection}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Request URL</th>
-                                <td className='pt-3 pl-3'>{detail?.requestURL}</td>
+                                <td className='pt-3 pl-10'>{detail?.requestURL}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Request Method</th>
-                                <td className='pt-3 pl-3'>{detail?.requestMethod}</td>
+                                <td className='pt-3 pl-10'>{detail?.requestMethod}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -38,11 +38,11 @@ export default function RestAPIDetail({ id }: Props) {
                         <tbody>
                             <tr>
                                 <th className='text-left pt-3'>Created By</th>
-                                <td className='pt-3 pl-3'>{detail?.createdBy}</td>
+                                <td className='pt-3 pl-10'>{detail?.createdBy}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Created On</th>
-                                <td className='pt-3 pl-3'>{dayjs(detail?.createdOn).format(DATETIME_FORMAT)}</td>
+                                <td className='pt-3 pl-10'>{dayjs(detail?.createdOn).format(DATETIME_FORMAT)}</td>
                             </tr>
                         </tbody>
                     </table>

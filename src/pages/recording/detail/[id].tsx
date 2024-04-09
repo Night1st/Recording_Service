@@ -3,6 +3,8 @@ import React from 'react'
 import { IRecording, RecordingData } from '@/shared/schemas/models/IRecording'
 import dayjs from 'dayjs'
 import { DATETIME_FORMAT } from '@/Settings'
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css"
 
 type Props = {
     id: number
@@ -11,6 +13,14 @@ type Props = {
 export default function ProjectDetail({ id }: Props) {
     const detail = RecordingData.find(obj => obj.id == id)
     console.log(detail)
+
+    const recordingTrack = [
+        {
+            name: "recording",
+            src: "/assets/ByYourSide.mp3"
+        }
+    ]
+
     const milisecondsToTime = (ms?: number) => {
         const time = ms
         if(time == undefined) return ""
@@ -35,67 +45,82 @@ export default function ProjectDetail({ id }: Props) {
                         <tbody>
                             <tr>
                                 <th className='text-left pt-3'>Channel</th>
-                                <td className='pt-3 pl-3'>{detail?.channel}</td>
+                                <td className='pt-3 pl-10'>{detail?.channel}</td>
+                            </tr>
+                            <tr>
+                                <th className='text-left pt-3'>Conversation ID</th>
+                                <td className='pt-3 pl-10'>{detail?.conversationId}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Conversation Start</th>
-                                <td className='pt-3 pl-3'>{dayjs(detail?.conversationStart).format(DATETIME_FORMAT)}</td>
+                                <td className='pt-3 pl-10'>{dayjs(detail?.conversationStart).format(DATETIME_FORMAT)}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Agent Name</th>
-                                <td className='pt-3 pl-3'>{detail?.agent}</td>
+                                <td className='pt-3 pl-10'>{detail?.agent}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Originating Direction</th>
-                                <td className='pt-3 pl-3'>{detail?.originatingDirection}</td>
+                                <td className='pt-3 pl-10'>{detail?.originatingDirection}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Queue Name</th>
-                                <td className='pt-3 pl-3'>{detail?.queue}</td>
+                                <td className='pt-3 pl-10'>{detail?.queue}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Remote</th>
-                                <td className='pt-3 pl-3'>{detail?.remote}</td>
+                                <td className='pt-3 pl-10'>{detail?.remote}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>DNIS</th>
-                                <td className='pt-3 pl-3'>{detail?.dnis}</td>
+                                <td className='pt-3 pl-10'>{detail?.dnis}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <div className='flex items-center gap-5'>
+                    {/* <div className='flex items-center gap-5'>
                         <p className='font-bold'>Recording</p>
                         <audio controls>
                             <source src='/assets/ByYourSide.mp3'></source>
                         </audio>
-                    </div>
+                    </div> */}
                 </div>
                 <div>
                     <table>
                         <tbody>
                         <tr>
                                 <th className='text-left pt-3'>Division Name</th>
-                                <td className='pt-3 pl-3'>{detail?.division}</td>
+                                <td className='pt-3 pl-10'>{detail?.division}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Division ID</th>
-                                <td className='pt-3 pl-3'>{detail?.divisionId}</td>
+                                <td className='pt-3 pl-10'>{detail?.divisionId}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Conversation Duration</th>
-                                <td className='pt-3 pl-3'>{milisecondsToTime(detail?.conversationDuration)}</td>
+                                <td className='pt-3 pl-10'>{milisecondsToTime(detail?.conversationDuration)}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>ACW</th>
-                                <td className='pt-3 pl-3'>{milisecondsToTime(detail?.acw)}</td>
+                                <td className='pt-3 pl-10'>{milisecondsToTime(detail?.acw)}</td>
                             </tr>
                             <tr>
                                 <th className='text-left pt-3'>Wrap-up</th>
-                                <td className='pt-3 pl-3'>{detail?.wrapUpCode}</td>
+                                <td className='pt-3 pl-10'>{detail?.wrapUpCode}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className=''>
+                <AudioPlayer
+                        // style={{ width: "300px" }}
+                    style={{ borderRadius: "1rem" }}
+                    // layout="horizontal"
+                    src={"https://www.bensound.com/bensound-music/bensound-memories.mp3"}
+                    onPlay={(e) => console.log("onPlay")}
+                    showSkipControls={true}
+                    showJumpControls={false}
+                />
             </div>
         </section>
     )
