@@ -14,7 +14,6 @@ import useRouterChange from '@/shared/hooks/useRouterChange';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { Toaster } from "@/shared/components/common/ui/toaster"
 import { Quicksand } from 'next/font/google'
-import { useGetInfoByToken } from '@/shared/schemas/models/IUser.model';
 import { useAppSelector } from '@/shared/hooks/useRedux';
 import { ScaleLoader } from 'react-spinners';
 
@@ -39,7 +38,6 @@ const Boostrap = ({
   children: React.ReactElement;
   getLayout: (page: ReactElement) => ReactNode;
 }) => {
-  useGetInfoByToken();
   const isRouteLoading = useAppSelector(state => state.appSlice.isRouteLoading)
   useRouterChange()
   return (

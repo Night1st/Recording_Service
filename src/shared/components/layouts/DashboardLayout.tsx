@@ -9,7 +9,6 @@ import { MENULAYOUT } from '@/Settings';
 import { Button } from '../common/ui/button';
 import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '../common/ui/sheet';
-import AccountSetting from '../business/AccountSetting';
 import dynamic from 'next/dynamic';
 
 const SideBarNav = dynamic(() => import('./SideBar/SidebarNav'), { ssr: false })
@@ -40,7 +39,6 @@ const DashBoardLayout = ({ children }: { children: React.ReactNode }) => {
                     </div>
                     <div>
                         {/* <LanguageSwitcher /> */}
-                        <AccountSetting />
                         {/* <span className='ml-[20px]'>
                             <ThemeModeToggle />
                         </span> */}
